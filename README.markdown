@@ -191,24 +191,24 @@ In particular, when adding protocol conformance to a model, prefer adding a sepa
 **Preferred**:
 ```swift
 class MyViewController: UIViewController {
-  // class stuff here
+    // class stuff here
 }
 
 // MARK: - UITableViewDataSource
 extension MyViewController: UITableViewDataSource {
-  // table view data source methods
+    // table view data source methods
 }
 
 // MARK: - UIScrollViewDelegate
 extension MyViewController: UIScrollViewDelegate {
-  // scroll view delegate methods
+    // scroll view delegate methods
 }
 ```
 
 **Not Preferred**:
 ```swift
 class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDelegate {
-  // all methods
+    // all methods
 }
 ```
 
@@ -227,25 +227,25 @@ As for example, the iOS UIApplicationDelegate with multiple unused methods.
 **Preferred**:
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  return Database.contacts.count
+    return Database.contacts.count
 }
 ```
 
 **Not Preferred**:
 ```swift
 override func didReceiveMemoryWarning() {
-  super.didReceiveMemoryWarning()
-  // Dispose of any resources that can be recreated.
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
 }
 
 override func numberOfSections(in tableView: UITableView) -> Int {
-  // #warning Incomplete implementation, return the number of sections
-  return 1
+    // #warning Incomplete implementation, return the number of sections
+    return 1
 }
 
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  // #warning Incomplete implementation, return the number of rows
-  return Database.contacts.count
+    // #warning Incomplete implementation, return the number of rows
+    return Database.contacts.count
 }
 
 ```
@@ -292,9 +292,9 @@ var deviceModels: [String]
 **Preferred**:
 ```swift
 if user.isHappy {
-  // Do something
+    // Do something
 } else {
-  // Do something else
+    // Do something else
 }
 ```
 
@@ -302,10 +302,10 @@ if user.isHappy {
 ```swift
 if user.isHappy
 {
-  // Do something
+    // Do something
 }
 else {
-  // Do something else
+    // Do something else
 }
 ```
 
@@ -319,14 +319,14 @@ else {
 **Preferred**:
 ```swift
 class TestDatabase: Database {
-  var data: [String : CGFloat] = ["A" : 1.2, "B" : 3.2]
+    var data: [String : CGFloat] = ["A" : 1.2, "B" : 3.2]
 }
 ```
 
 **Not Preferred**:
 ```swift
 class TestDatabase : Database {
-  var data :[String:CGFloat] = ["A": 1.2, "B":3.2]
+    var data :[String:CGFloat] = ["A": 1.2, "B":3.2]
 }
 ```
 
@@ -362,39 +362,39 @@ Here's an example of a well-styled class definition:
 
 ```swift
 class Circle: Shape {
-  var x: Int, y: Int
-  var radius: Double
-  var diameter: Double {
-    get {
-      return radius * 2
-    }
-    set {
-      radius = newValue / 2
-    }
+    var x: Int, y: Int
+    var radius: Double
+    var diameter: Double {
+        get {
+            return radius * 2
+        }
+        set {
+            radius = newValue / 2
+        }
   }
 
   init(x: Int, y: Int, radius: Double) {
-    self.x = x
-    self.y = y
-    self.radius = radius
+      self.x = x
+      self.y = y
+      self.radius = radius
   }
 
   convenience init(x: Int, y: Int, diameter: Double) {
-    self.init(x: x, y: y, radius: diameter / 2)
+      self.init(x: x, y: y, radius: diameter / 2)
   }
 
   override func area() -> Double {
-    return Double.pi * radius * radius
+      return Double.pi * radius * radius
   }
 }
 
 extension Circle: CustomStringConvertible {
-  var description: String {
-    return "center = \(centerString) area = \(area())"
-  }
-  private var centerString: String {
-    return "(\(x),\(y))"
-  }
+    var description: String {
+        return "center = \(centerString) area = \(area())"
+    }
+    private var centerString: String {
+        return "(\(x),\(y))"
+    }
 }
 ```
 
@@ -421,16 +421,16 @@ For conciseness, if a computed property is read-only, omit the get clause. The g
 **Preferred**:
 ```swift
 var diameter: Double {
-  return radius * 2
+    return radius * 2
 }
 ```
 
 **Not Preferred**:
 ```swift
 var diameter: Double {
-  get {
-    return radius * 2
-  }
+    get {
+      return radius * 2
+    }
 }
 ```
 
@@ -495,8 +495,8 @@ If it doesn't fit, put each parameter on a new line and add an extra indent on s
 func reticulate(
     splines: [Double], 
     adjustmentFactor: Double,
-    translateConstant: Int, comment: String
-) -> Bool {
+    translateConstant: Int, comment: String) 
+-> Bool {
     // reticulate code goes here
 }
 ```
@@ -1027,14 +1027,14 @@ Parentheses around conditionals are not required and should be omitted.
 **Preferred**:
 ```swift
 if name == "Hello" {
-  print("World")
+    print("World")
 }
 ```
 
 **Not Preferred**:
 ```swift
 if (name == "Hello") {
-  print("World")
+    print("World")
 }
 ```
 
@@ -1053,92 +1053,33 @@ When building a long string literal, you're encouraged to use the multi-line str
 
 ```swift
 let message = """
-  You cannot charge the flux \
-  capacitor with a 9V battery.
-  You must use a super-charger \
-  which costs 10 credits. You currently \
-  have \(credits) credits available.
-  """
+    You cannot charge the flux \
+    capacitor with a 9V battery.
+    You must use a super-charger \
+    which costs 10 credits. You currently \
+    have \(credits) credits available.
+"""
 ```
 
 **Not Preferred**:
 
 ```swift
 let message = """You cannot charge the flux \
-  capacitor with a 9V battery.
-  You must use a super-charger \
-  which costs 10 credits. You currently \
-  have \(credits) credits available.
-  """
+    capacitor with a 9V battery.
+    You must use a super-charger \
+    which costs 10 credits. You currently \
+    have \(credits) credits available.
+"""
 ```
 
 **Not Preferred**:
 
 ```swift
 let message = "You cannot charge the flux " +
-  "capacitor with a 9V battery.\n" +
-  "You must use a super-charger " +
-  "which costs 10 credits. You currently " +
-  "have \(credits) credits available."
-```
-
-## No Emoji
-
-Do not use emoji in your projects. For those readers who actually type in their code, it's an unnecessary source of friction. While it may be cute, it doesn't add to the learning and it interrupts the coding flow for these readers.
-
-## Organization and Bundle Identifier
-
-Where an Xcode project is involved, the organization should be set to `Ray Wenderlich` and the Bundle Identifier set to `com.razeware.TutorialName` where `TutorialName` is the name of the tutorial project.
-
-![Xcode Project settings](screens/project_settings.png)
-
-## Copyright Statement
-
-The following copyright statement should be included at the top of every source
-file:
-
-```swift
-/// Copyright (c) 2019 Razeware LLC
-/// 
-/// Permission is hereby granted, free of charge, to any person obtaining a copy
-/// of this software and associated documentation files (the "Software"), to deal
-/// in the Software without restriction, including without limitation the rights
-/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-/// copies of the Software, and to permit persons to whom the Software is
-/// furnished to do so, subject to the following conditions:
-/// 
-/// The above copyright notice and this permission notice shall be included in
-/// all copies or substantial portions of the Software.
-/// 
-/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
-/// distribute, sublicense, create a derivative work, and/or sell copies of the
-/// Software in any work that is designed, intended, or marketed for pedagogical or
-/// instructional purposes related to programming, coding, application development,
-/// or information technology.  Permission for such use, copying, modification,
-/// merger, publication, distribution, sublicensing, creation of derivative works,
-/// or sale is expressly withheld.
-/// 
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-/// THE SOFTWARE.
-```
-
-## Smiley Face
-
-Smiley faces are a very prominent style feature of the [raywenderlich.com](https://www.raywenderlich.com/) site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket `]` is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis `)` creates a half-hearted smile, and thus is not preferred.
-
-**Preferred**:
-```
-:]
-```
-
-**Not Preferred**:
-```
-:)
+    "capacitor with a 9V battery.\n" +
+    "You must use a super-charger " +
+    "which costs 10 credits. You currently " +
+    "have \(credits) credits available."
 ```
 
 ## References
