@@ -456,14 +456,6 @@ final class Box<T> {
 
 Keep short function declarations on one line including the opening brace:
 
-**Preferred**
-```swift
-func reticulate(splines: [Double]) -> Bool {
-    // reticulate code goes here
-}
-```
-
-**Not Preferred**
 ```swift
 func reticulate(splines: [Double]) -> Bool {
     // reticulate code goes here
