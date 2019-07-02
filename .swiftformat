@@ -1,0 +1,13 @@
+# file options
+
+--exclude Carthage,Pods,.build
+
+# format options
+
+--indent 4
+--patternlet inline
+--comments ignore
+--self init-only
+--commas inline
+
+# rules
